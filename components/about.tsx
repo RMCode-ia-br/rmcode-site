@@ -1,6 +1,7 @@
 import { ShieldCheck, Rocket, Cpu, Users, type LucideIcon } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { Spotlight } from '@/components/spotlight'
 
 const PILLARS: { icon: LucideIcon; title: string; description: string }[] = [
   { icon: Cpu, title: 'Excelência técnica', description: 'Stack moderna, código limpo e boas práticas de engenharia.' },
@@ -38,10 +39,12 @@ export function About() {
 
         <ul className="grid gap-4 self-end sm:grid-cols-2">
           {PILLARS.map((pillar, index) => (
-            <Reveal as="li" key={pillar.title} delay={index * 100} className="rounded-2xl border border-border bg-card/60 p-6">
-              <pillar.icon className="size-6 text-primary" aria-hidden="true" />
-              <h3 className="mt-5 font-semibold">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
+            <Reveal as="li" key={pillar.title} delay={index * 100}>
+              <Spotlight className="h-full rounded-2xl border border-border bg-card/60 p-6">
+                <pillar.icon className="size-6 text-primary" aria-hidden="true" />
+                <h3 className="mt-5 font-semibold">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
+              </Spotlight>
             </Reveal>
           ))}
         </ul>

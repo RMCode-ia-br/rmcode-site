@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { Spotlight } from '@/components/spotlight'
 
 type Service = {
   icon: LucideIcon
@@ -69,7 +70,8 @@ export function Services() {
         <div className="service-grid mt-14 grid gap-6 lg:grid-cols-2">
           {SERVICES.map((service, index) => (
             <Reveal key={service.title} delay={index * 150} className="service-slot flex">
-            <article
+            <Spotlight
+              as="article"
               className="service-card group relative flex flex-1 flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-7 hover:border-primary/40 md:p-10"
             >
               <div
@@ -106,7 +108,7 @@ export function Services() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </Spotlight>
             </Reveal>
           ))}
         </div>

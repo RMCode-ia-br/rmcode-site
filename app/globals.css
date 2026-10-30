@@ -152,6 +152,79 @@
   }
 }
 
+/* Brilho que acompanha o cursor (posição vem de --mx/--my, definidos em spotlight.tsx). */
+@media (hover: hover) {
+  .spotlight {
+    position: relative;
+  }
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 400ms ease;
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), oklch(0.68 0.19 292 / 16%), transparent 65%);
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Digitação do título */
+.type-caret {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 1em;
+  vertical-align: text-bottom;
+}
+.type-caret::after {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 0.1em;
+  bottom: 0.05em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--neon);
+  animation: caret-blink 1s steps(1) infinite;
+}
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Fundo vivo do hero: parallax pelo scroll (--py) + flutuação lenta das manchas. */
+@keyframes blob-float {
+  from {
+    transform: translate3d(-4%, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4%, 10%, 0) scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-grid {
+    background-position: 0 calc(var(--py, 0) * -0.15px);
+  }
+  .hero-blob {
+    transform: translate3d(0, calc(var(--py, 0) * 0.3px), 0);
+  }
+  .hero-blob-slow {
+    transform: translate3d(0, calc(var(--py, 0) * -0.12px), 0);
+  }
+  .hero-blob-inner {
+    animation: blob-float 14s ease-in-out infinite alternate;
+  }
+  .hero-blob-inner-slow {
+    animation: blob-float 19s ease-in-out infinite alternate-reverse;
+  }
+}
+
 @media (hover: none) and (prefers-reduced-motion: no-preference) {
   .service-card:active {
     transform: scale(1.02);
