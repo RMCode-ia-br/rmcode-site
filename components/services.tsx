@@ -12,7 +12,9 @@ import {
   Check,
   type LucideIcon,
 } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { Spotlight } from '@/components/spotlight'
 
 type Service = {
   icon: LucideIcon
@@ -65,11 +67,12 @@ export function Services() {
           description="Dois pilares complementares para levar sua operação a um novo patamar de eficiência e inovação."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          {SERVICES.map((service) => (
-            <article
-              key={service.title}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-7 transition-colors hover:border-primary/40 md:p-10"
+        <div className="service-grid mt-14 grid gap-6 lg:grid-cols-2">
+          {SERVICES.map((service, index) => (
+            <Reveal key={service.title} delay={index * 150} className="service-slot flex">
+            <Spotlight
+              as="article"
+              className="service-card group relative flex flex-1 flex-col overflow-hidden rounded-3xl border border-border bg-card/60 p-7 hover:border-primary/40 md:p-10"
             >
               <div
                 aria-hidden="true"
@@ -105,7 +108,8 @@ export function Services() {
                   </li>
                 ))}
               </ul>
-            </article>
+            </Spotlight>
+            </Reveal>
           ))}
         </div>
       </div>

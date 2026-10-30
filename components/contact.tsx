@@ -1,4 +1,5 @@
 import { Mail, MessageCircle, Globe, ArrowUpRight } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { ContactForm } from '@/components/contact-form'
 import { CONTACT_EMAIL, whatsappLink } from '@/lib/site'
@@ -19,23 +20,25 @@ export function Contact() {
             description="Conte sobre o seu desafio. Nossa equipe retorna com um diagnóstico inicial e os próximos passos para o seu projeto."
           />
 
-          <a
-            href={whatsappLink()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group mt-10 flex items-center gap-4 rounded-2xl border border-primary/30 bg-primary/10 p-5 transition-colors hover:bg-primary/15"
-          >
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <MessageCircle className="size-6" aria-hidden="true" />
-            </span>
-            <span className="flex flex-1 flex-col">
-              <span className="font-medium">Fale direto no WhatsApp</span>
-              <span className="text-sm text-muted-foreground">Atendimento rápido com um especialista</span>
-            </span>
-            <ArrowUpRight className="size-5 text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-          </a>
+          <Reveal delay={150} className="mt-10">
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl border border-primary/30 bg-primary/10 p-5 transition-colors hover:bg-primary/15"
+            >
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <MessageCircle className="size-6" aria-hidden="true" />
+              </span>
+              <span className="flex flex-1 flex-col">
+                <span className="font-medium">Fale direto no WhatsApp</span>
+                <span className="text-sm text-muted-foreground">Atendimento rápido com um especialista</span>
+              </span>
+              <ArrowUpRight className="size-5 text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </a>
+          </Reveal>
 
-          <ul className="mt-6 flex flex-col gap-4 text-sm">
+          <Reveal as="ul" delay={250} className="mt-6 flex flex-col gap-4 text-sm">
             <li className="flex items-center gap-3 text-muted-foreground">
               <Mail className="size-4 text-accent" aria-hidden="true" />
               <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-foreground">
@@ -46,12 +49,12 @@ export function Contact() {
               <Globe className="size-4 text-accent" aria-hidden="true" />
               rmcode.ia.br
             </li>
-          </ul>
+          </Reveal>
         </div>
 
-        <div className="rounded-3xl border border-border bg-card/70 p-6 backdrop-blur md:p-10">
+        <Reveal delay={200} className="rounded-3xl border border-border bg-card/70 p-6 backdrop-blur md:p-10">
           <ContactForm />
-        </div>
+        </Reveal>
       </div>
     </section>
   )

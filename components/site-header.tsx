@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { NAV_LINKS } from '@/lib/site'
 
@@ -9,7 +9,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/70 backdrop-blur-xl">
+    <header className="animate-fade-down fixed inset-x-0 top-0 z-50 border-b border-border bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
         <Logo />
 
@@ -24,14 +24,6 @@ export function SiteHeader() {
             ))}
           </ul>
         </nav>
-
-        <a
-          href="#contato"
-          className="hidden items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-primary/20 md:inline-flex"
-        >
-          Fale conosco
-          <ArrowUpRight className="size-4" aria-hidden="true" />
-        </a>
 
         <button
           type="button"

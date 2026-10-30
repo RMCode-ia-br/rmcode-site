@@ -1,5 +1,7 @@
 import { ShieldCheck, Rocket, Cpu, Users, type LucideIcon } from 'lucide-react'
+import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { Spotlight } from '@/components/spotlight'
 
 const PILLARS: { icon: LucideIcon; title: string; description: string }[] = [
   { icon: Cpu, title: 'Excelência técnica', description: 'Stack moderna, código limpo e boas práticas de engenharia.' },
@@ -22,7 +24,7 @@ export function About() {
               </>
             }
           />
-          <div className="mt-6 flex flex-col gap-5 leading-relaxed text-muted-foreground md:text-lg">
+          <Reveal delay={150} className="mt-6 flex flex-col gap-5 leading-relaxed text-muted-foreground md:text-lg">
             <p>
               A RMCode é especialista em desenvolvimento de software sob medida e soluções corporativas com Inteligência
               Artificial. Unimos profundo conhecimento técnico e visão estratégica para transformar desafios complexos em
@@ -32,16 +34,18 @@ export function About() {
               Acreditamos que a tecnologia certa, construída do jeito certo, é o que separa empresas que acompanham o
               mercado daquelas que o lideram.
             </p>
-          </div>
+          </Reveal>
         </div>
 
         <ul className="grid gap-4 self-end sm:grid-cols-2">
-          {PILLARS.map((pillar) => (
-            <li key={pillar.title} className="rounded-2xl border border-border bg-card/60 p-6">
-              <pillar.icon className="size-6 text-primary" aria-hidden="true" />
-              <h3 className="mt-5 font-semibold">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
-            </li>
+          {PILLARS.map((pillar, index) => (
+            <Reveal as="li" key={pillar.title} delay={index * 100}>
+              <Spotlight className="h-full rounded-2xl border border-border bg-card/60 p-6">
+                <pillar.icon className="size-6 text-primary" aria-hidden="true" />
+                <h3 className="mt-5 font-semibold">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
+              </Spotlight>
+            </Reveal>
           ))}
         </ul>
       </div>
